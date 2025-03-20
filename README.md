@@ -1,26 +1,22 @@
 # EXPERIMENT-01-INTERFACING-A-DIGITAL-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
+**DATE:** 20.03.2025
 
-**DATE:**
+**NAME:** PRIDEESH M
 
-**NAME:**
+**REG NO:** 212223040154
 
-**ROLL NO:**
-
-**DEPARTMENT:**
+**DEPARTMENT:** COMPUTER SCIENCE ENGINEERING
 
 ## Aim
-
 To Interface a Digital output (LED) to ARM IOT development board and write a program to blink an LED.
 
 ## Components required
-
 - STM32 CUBE IDE
 - ARM IOT development board
 - STM programmer tool
 
 ## Theory
-
 The ARM (Advanced RISC Machine) architecture is widely used in microcontrollers and processors due to its efficiency, low power consumption, and high performance. ARM processors follow the Reduced Instruction Set Computing (RISC) design, making them ideal for embedded systems, mobile devices, and IoT applications. Many well-known semiconductor companies, including STMicroelectronics, use ARM-based architectures to develop powerful and energy-efficient microcontrollers.
 
 One such microcontroller is the STM32WLE5JC, which is part of the STM32 family and is based on the ARM Cortex-M4 core. It is specifically designed for LoRaWAN® and other sub-GHz wireless communication applications, making it ideal for IoT and LPWAN (Low Power Wide Area Network) solutions. This microcontroller integrates a LoRa® transceiver, eliminating the need for an external radio module and reducing both cost and power consumption. With a maximum clock speed of 48 MHz, 256 KB of Flash memory, and 64 KB of RAM, it provides enough computing power for real-time data processing and wireless communication.
@@ -47,33 +43,24 @@ With its power-efficient design, built-in LoRaWAN support, and flexible communic
 5. Corresponding ioc file will be generated automatically
 ![Screenshot 2025-03-11 134528](https://github.com/user-attachments/assets/df427edd-e24a-4612-a858-aeae859b379f)
 
-
 6. Select the appropriate pins as GPIO, in or out, USART or required options and configure
 ![Screenshot 2025-03-11 134617](https://github.com/user-attachments/assets/125ee548-30b1-4c88-932f-adf07984522f)
 ![Screenshot 2025-03-11 134642](https://github.com/user-attachments/assets/0adfbb58-4cad-408a-9300-f4808b53cac4)
-
 
 7. Click on Ctrl+S, automatically C program will be generated
 ![Screenshot 2025-03-11 134709](https://github.com/user-attachments/assets/70b83b79-1569-4f14-99d5-e2adbb4e692d)
 
 8. Edit the program and as per required 
-
 ![image](https://user-images.githubusercontent.com/36288975/226189461-a573e62f-a109-4631-a250-a20925758fe0.png)
 
-
 9. Use project and build all 
-
 ![image](https://user-images.githubusercontent.com/36288975/226189554-3f7101ac-3f41-48fc-abc7-480bd6218dec.png)
 
 10. Once the project is bulild 
-
 ![image](https://user-images.githubusercontent.com/36288975/226189577-c61cc1eb-3990-4968-8aa6-aefffc766b70.png)
 
 11. Open STM32Cube Programmer
-
 ![Screenshot 2025-03-11 135208](https://github.com/user-attachments/assets/bb67ab6b-81a5-450c-b170-4276a9b87ef2)
-
-
 
 12. Connect the STM board through the COM port, then upload the corresponding project ELF file while ensuring the board is in flash mode, and click on 'Start Program.' After the file download is complete, switch your board to run mode and press the reset button to see the output
 
@@ -82,13 +69,49 @@ With its power-efficient design, built-in LoRaWAN support, and flexible communic
 
 
 
+
+
+
 ## STM 32 CUBE PROGRAM
 
-```c
-// Your STM 32 CUBE Program code here
+```
+#include "main.h"
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void)
+{
+  HAL_Init();
+
+  SystemClock_Config();
+
+  MX_GPIO_Init();
+
+  while (1)
+  {
+
+	     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	     HAL_Delay(1000);
+	     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	     HAL_Delay(1000);
+  }
+}
 ```
 
 ## OUTPUT
+
+## LED ON
+
+![1 ON](https://github.com/user-attachments/assets/954f08d3-2ca9-4da3-a45e-c5600c074217)
+
+## LED OFF
+
+![1 OFF](https://github.com/user-attachments/assets/38619cd2-a518-499b-9df5-5d36690feb8c)
+
+
+
+
 
 ## Result
 
